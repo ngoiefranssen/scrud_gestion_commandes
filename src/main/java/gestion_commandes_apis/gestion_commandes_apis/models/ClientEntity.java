@@ -1,18 +1,36 @@
 package gestion_commandes_apis.gestion_commandes_apis.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Data
 public class ClientEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private Integer clientId;
+
+    @NotBlank(message = "Le champ nomClient ne peut pas être vide")
+    
     private String nomClient;
+
+    @Column(unique = true, nullable = false)
+    @NotBlank(message = "Le champ emailClient ne peut pas être vide")
+    @Email(message = "Format d'email invalide")
+    
     private String emailClient;
+
+    @NotBlank(message = "Le champ adresseClient ne peut pas être vide")
+    
     private String adresseClient;
+
+    @NotBlank(message = "Le champ telephoneClient ne peut pas être vide")
+    
     private String telephoneClient;
 }
