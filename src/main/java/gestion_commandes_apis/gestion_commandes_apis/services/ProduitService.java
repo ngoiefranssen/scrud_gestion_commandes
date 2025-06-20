@@ -1,8 +1,11 @@
 package gestion_commandes_apis.gestion_commandes_apis.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import gestion_commandes_apis.gestion_commandes_apis.dtos.UpdateProduitDTO;
@@ -19,10 +22,20 @@ public class ProduitService {
         return produitRepository.findAll();
     }
 
+    // Méthode pour obtenir tous les clients avec pagination et recherche
+    public Page<ProduitEntity> getAllProduitEntities(String search, Pageable pageable) {
+        if (search != null && !search.isEmpty()) {
+            return produitRepository.findByNomProduitContainingIgnoreCaseOrDescriptionProduitContainingIgnoreCase(
+                    search, search,
+                    pageable);
+        } else {
+            return produitRepository.findAll(pageable);
+        }
+    }
+
     // Méthode pour trouver un produit par son ID
-    public ProduitEntity getByIdProduitEntity(Integer produitId) {
-        return produitRepository.findById(produitId)
-                .orElseThrow(() -> new RuntimeException("Produit introuvable"));
+    public Optional <ProduitEntity> getByIdProduitEntity(Integer produitId) {
+        return produitRepository.findById(produitId);
     }
 
     // Méthode pour ajouter un produit

@@ -1,16 +1,13 @@
 package gestion_commandes_apis.gestion_commandes_apis.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Data
+@Table(name = "clients")
 public class ClientEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     
