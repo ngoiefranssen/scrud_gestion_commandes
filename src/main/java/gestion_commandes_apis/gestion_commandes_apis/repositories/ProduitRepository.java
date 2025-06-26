@@ -6,5 +6,6 @@ import gestion_commandes_apis.gestion_commandes_apis.models.ProduitEntity;
 
 public interface ProduitRepository extends JpaRepository<ProduitEntity, Integer> {
     // Méthode pour rechercher par nom ou email avec pagination
-    Page<ProduitEntity> findByNomProduitContainingIgnoreCaseOrDescriptionProduitContainingIgnoreCase(String nomProduit, String descriptionProduit, org.springframework.data.domain.Pageable pageable);
+    Page<ProduitEntity> findByNomProduitContainingIgnoreCaseOrDescriptionProduitContainingIgnoreCase(String nomProduit,
+            String descriptionProduit, org.springframework.data.domain.Pageable pageable);
 }

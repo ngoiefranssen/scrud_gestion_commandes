@@ -1,13 +1,14 @@
-package gestion_commandes_apis.gestion_commandes_apis.dtos;
+package gestion_commandes_apis.gestion_commandes_apis.dtos.update;
 
-public class UpdateClientDTO {
+public class UpdateClientRequestDTO {
     private String nomClient;
     private String emailClient;
     private String adresseClient;
     private String telephoneClient;
 
     // Constructeur par défaut
-    public UpdateClientDTO() {}
+    public UpdateClientRequestDTO() {
+    }
 
     // Getters
     public String getNomClient() {

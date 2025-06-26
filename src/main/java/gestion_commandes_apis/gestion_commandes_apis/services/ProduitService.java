@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import gestion_commandes_apis.gestion_commandes_apis.dtos.UpdateProduitDTO;
+import gestion_commandes_apis.gestion_commandes_apis.dtos.update.UpdateProduitRequestDTO;
 import gestion_commandes_apis.gestion_commandes_apis.models.ProduitEntity;
 import gestion_commandes_apis.gestion_commandes_apis.repositories.ProduitRepository;
 
@@ -34,7 +34,7 @@ public class ProduitService {
     }
 
     // Méthode pour trouver un produit par son ID
-    public Optional <ProduitEntity> getByIdProduitEntity(Integer produitId) {
+    public Optional<ProduitEntity> getByIdProduitEntity(Integer produitId) {
         return produitRepository.findById(produitId);
     }
 
@@ -44,7 +44,7 @@ public class ProduitService {
     }
 
     // Méthode pour mettre à jour un produit
-    public ProduitEntity updateProduitEntity(Integer id, UpdateProduitDTO dto) {
+    public ProduitEntity updateProduitEntity(Integer id, UpdateProduitRequestDTO dto) {
         ProduitEntity existingProduit = produitRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Produit introuvable"));
 

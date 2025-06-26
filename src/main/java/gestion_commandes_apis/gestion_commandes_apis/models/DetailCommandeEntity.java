@@ -8,7 +8,8 @@ import lombok.Data;
 @Entity
 @Data
 public class DetailCommandeEntity {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer detailCommandeId;
 
     @ManyToOne

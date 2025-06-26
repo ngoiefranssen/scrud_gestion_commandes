@@ -1,13 +1,14 @@
-package gestion_commandes_apis.gestion_commandes_apis.dtos;
+package gestion_commandes_apis.gestion_commandes_apis.dtos.update;
 
-public class UpdateProduitDTO {
+public class UpdateProduitRequestDTO {
     public String nomProduit;
     public String descriptionProduit;
     public String prixUnitaire;
     public String quantiteStock;
 
     // Constructeur par défaut
-    public UpdateProduitDTO() {}
+    public UpdateProduitRequestDTO() {
+    }
 
     // Getters
     public String getNomProduit() {
@@ -21,7 +22,7 @@ public class UpdateProduitDTO {
     public String getPrixUnitaire() {
         return prixUnitaire;
     }
-     
+
     public String getQuantiteStock() {
         return quantiteStock;
     }
@@ -37,7 +38,7 @@ public class UpdateProduitDTO {
 
     public void setPrixUnitaire(String prixUnitaire) {
         this.prixUnitaire = prixUnitaire;
-    } 
+    }
 
     public void setQuantiteStock(String quantiteStock) {
         this.quantiteStock = quantiteStock;

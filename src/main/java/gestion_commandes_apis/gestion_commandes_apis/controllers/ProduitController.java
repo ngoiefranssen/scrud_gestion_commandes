@@ -23,8 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import gestion_commandes_apis.gestion_commandes_apis.dtos.UpdateProduitDTO;
-import gestion_commandes_apis.gestion_commandes_apis.models.ClientEntity;
+import gestion_commandes_apis.gestion_commandes_apis.dtos.update.UpdateProduitRequestDTO;
 import gestion_commandes_apis.gestion_commandes_apis.models.ProduitEntity;
 import gestion_commandes_apis.gestion_commandes_apis.services.ProduitService;
 import jakarta.validation.Valid;
@@ -152,7 +151,7 @@ public class ProduitController {
     @PutMapping(value = "/{produitId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> updateProduct(
             @PathVariable Integer produitId,
-            @Valid @ModelAttribute UpdateProduitDTO dto,
+            @Valid @ModelAttribute UpdateProduitRequestDTO dto,
             BindingResult result) {
 
         if (result.hasErrors()) {

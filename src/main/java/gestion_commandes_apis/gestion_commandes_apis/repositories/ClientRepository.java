@@ -16,5 +16,6 @@ public interface ClientRepository extends JpaRepository<ClientEntity, Integer> {
     boolean existsByEmailClient(String emailClient);
 
     // Méthode pour rechercher par nom ou email avec pagination
-    Page<ClientEntity> findByNomClientContainingIgnoreCaseOrEmailClientContainingIgnoreCase(String nomClient, String emailClient, Pageable pageable);
+    Page<ClientEntity> findByNomClientContainingIgnoreCaseOrEmailClientContainingIgnoreCase(String nomClient,
+            String emailClient, Pageable pageable);
 }

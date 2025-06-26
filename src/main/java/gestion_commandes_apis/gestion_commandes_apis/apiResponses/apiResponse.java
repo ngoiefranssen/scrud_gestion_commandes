@@ -6,6 +6,7 @@ public class apiResponse<T> {
     private T data;
     private int statusCode;
 
+    // 
     public apiResponse(boolean success, String message, T data, int statusCode) {
         this.success = success;
         this.message = message;
@@ -18,7 +19,7 @@ public class apiResponse<T> {
         return success;
     }
 
-    public void setSuccess(boolean success){
+    public void setSuccess(boolean success) {
         this.success = success;
     }
 
@@ -38,7 +39,7 @@ public class apiResponse<T> {
         this.data = data;
     }
 
-    public int getStatusCode(){
+    public int getStatusCode() {
         return statusCode;
     }
 

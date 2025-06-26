@@ -3,10 +3,7 @@ package gestion_commandes_apis.gestion_commandes_apis.models;
 import java.math.BigDecimal;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 @Entity

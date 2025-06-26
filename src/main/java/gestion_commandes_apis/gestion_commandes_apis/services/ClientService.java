@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import gestion_commandes_apis.gestion_commandes_apis.dtos.UpdateClientDTO;
+import gestion_commandes_apis.gestion_commandes_apis.dtos.update.UpdateClientRequestDTO;
 import gestion_commandes_apis.gestion_commandes_apis.models.ClientEntity;
 import gestion_commandes_apis.gestion_commandes_apis.repositories.ClientRepository;
 
@@ -20,6 +20,16 @@ public class ClientService {
     // Méthode pour trouver tous les clients
     public List<ClientEntity> getAllClientEntities() {
         return clientRepository.findAll();
+    }
+
+    // Méthode pour obtenir tous les clients avec pagination et recherche
+    public Page<ClientEntity> getAllClientEntities(String search, Pageable pageable) {
+        if (search != null && !search.isEmpty()) {
+            return clientRepository.findByNomClientContainingIgnoreCaseOrEmailClientContainingIgnoreCase(search, search,
+                    pageable);
+        } else {
+            return clientRepository.findAll(pageable);
+        }
     }
 
     // Méthode pour trouver un client par son ID
@@ -38,7 +48,7 @@ public class ClientService {
     }
 
     // Méthode pour mettre à jour un client
-    public ClientEntity updateClientEntity(Integer id, UpdateClientDTO dto) {
+    public ClientEntity updateClientEntity(Integer id, UpdateClientRequestDTO dto) {
 
         ClientEntity client = clientRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Client introuvable"));
@@ -75,16 +85,6 @@ public class ClientService {
     // Méthode pour vérifier l'existence d'un client par son email
     public boolean existsByEmailClient(String emailClient) {
         return clientRepository.existsByEmailClient(emailClient);
-    }
-
-    // Méthode pour obtenir tous les clients avec pagination et recherche
-    public Page<ClientEntity> getAllClientEntities(String search, Pageable pageable) {
-        if (search != null && !search.isEmpty()) {
-            return clientRepository.findByNomClientContainingIgnoreCaseOrEmailClientContainingIgnoreCase(search, search,
-                    pageable);
-        } else {
-            return clientRepository.findAll(pageable);
-        }
     }
 
     // Méthode pour obtenir un client par son ID
